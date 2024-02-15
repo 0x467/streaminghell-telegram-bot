@@ -5,6 +5,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node-dev ./src/main.ts",
+    "docker:build": "docker build . -t streaminghell-telegram-bot:latest",
+    "docker:run": "docker run --name streaminghell-telegram-bot --env-file ./.env streaminghell-telegram-bot:latest",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
