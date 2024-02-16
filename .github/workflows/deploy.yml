@@ -6,8 +6,7 @@ name: Deploy
 # documentation.
 
 on:
-  schedule:
-    - cron: '29 21 * * *'
+  workflow_dispatch:
   push:
     branches: [ "main" ]
     # Publish semver tags as releases.
