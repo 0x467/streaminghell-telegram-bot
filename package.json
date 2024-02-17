@@ -1,25 +1,32 @@
 {
   "name": "@streaminghell/telegram-bot",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "",
+  "type": "module",
   "scripts": {
-    "build": "tsc",
-    "dev": "ts-node-dev ./src/main.ts",
+    "build": "tsc && npm run sentry:sourcemaps",
+    "dev": "tsx ./src/main.ts",
     "docker:build": "docker build . -t streaminghell-telegram-bot:latest",
     "docker:run": "docker run --name streaminghell-telegram-bot --env-file ./.env streaminghell-telegram-bot:latest",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org 0x467 --project node ./dist && sentry-cli sourcemaps upload --org 0x467 --project node ./dist"
   },
   "keywords": [],
   "author": "0x467 <0x467@pm.me>",
   "license": "MIT",
   "dependencies": {
-    "grammy": "^1.20.4"
+    "@deno/kv": "^0.7.0",
+    "@grammyjs/i18n": "^1.0.1",
+    "@sentry/cli": "^2.28.6",
+    "@sentry/node": "^7.101.1",
+    "@sentry/profiling-node": "^7.101.1",
+    "grammy": "^1.20.4",
+    "tsx": "^4.7.1"
   },
   "devDependencies": {
     "@types/node": "^20.11.17",
     "dotenv": "^16.4.4",
     "prettier": "^3.2.5",
-    "ts-node-dev": "^2.0.0",
     "typescript": "^5.3.3"
   }
 }
